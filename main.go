@@ -31,6 +31,8 @@ func main(){
     myDsn := Dsn()	
     
     db, errc := sql.Open("mysql", myDsn)
+	
+    defer db.Close()	
 
     if(errc!=nil){
         	
@@ -47,7 +49,7 @@ func main(){
     		return
     }
     
-    defer db.Close()
+ 
     
     log.Println("Good Conection")
 
